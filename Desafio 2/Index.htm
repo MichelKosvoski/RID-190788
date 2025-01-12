@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dev News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&display=swap" rel="stylesheet">
+    <style>
+html {
+    font-family: "Manrope", sans-serif;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #00a676;
+    color: white;
+    text-align: left;
+    padding: 1.5rem 4rem;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.Recentes {
+    margin: 0;
+    gap: 1rem; /* Reduz o espaço entre os elementos */
+    font-size: 1rem;
+    background-color: #00a676;
+    color: white;
+    text-align: left;
+    padding: 1px 4rem;
+    border-radius: 8px;
+}
+
+.Populares {
+    background-color: #00a676;
+    color: white;
+    text-align: left;
+    padding: 1px 4rem;
+    border-radius: 8px;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Mantém a proporção */
+    gap: 1rem; /* Reduz o espaço entre os elementos */
+    max-width: 1200px;
+    margin: 1rem auto ; /* Diminui o espaço superior e inferior */
+    padding: 0 1rem; /* Mantém o espaçamento horizontal */
+}
+
+.featured-post {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    grid-column: 1 / 2;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.featured-post img {
+    width: 100%;
+    height: 100%;
+}
+
+.Container-Recentes {
+    margin-top: 1rem; /* Ajusta o espaço superior */
+    padding: 0; /* Remove qualquer espaçamento interno */
+}
+
+.sidebar {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sidebar-section {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-section h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: #00a676;
+    position: relative;
+}
+
+.sidebar-section h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 50px;
+    height: 4px;
+    background-color: #00a676;
+}
+
+.sidebar-post {
+    margin: 1.5rem 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar-post img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.sidebar-post p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.sidebar-categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-categories ul li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-categories ul li a {
+    text-decoration: none;
+    color: #616161;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.sidebar-categories ul li a:hover {
+    color: #616161;
+}
+
+.posts-container {
+    display: flex; /* Alinha horizontalmente */
+    gap: 2rem; /* Espaço entre as colunas */
+    margin-top: 1rem; /* Reduz o espaço superior */
+    align-items: flex-start; /* Alinhamento no topo */
+}
+
+.posts-container .post-grid {
+    flex: 3; /* Ocupa mais espaço */
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-section.sidebar-categories {
+    flex: 1; /* Ocupa menos espaço */
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.post img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.post-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.post-content p {
+    margin: 0;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+footer {
+    text-align: center;
+    background: #00a676;
+    color: white;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .main-container {
+        display: flex;
+        flex-direction: column-reverse; /* Inverte a ordem dos elementos */
+        gap: 1rem; /* Espaçamento entre as seções */
+    }
+
+    /* Ordem invertida no mobile */
+    .sidebar .sidebar-section.sidebar-categories {
+        order: 1; /* Primeiro no mobile: "Categorias" */
+    }
+
+    .sidebar .sidebar-section:first-child {
+        order: 2; /* Segundo no mobile: "Posts populares" */
+    }
+
+    .posts-container {
+        order: 3; /* Terceiro no mobile: "Posts mais recentes" */
+    }
+
+    .post-grid {
+        order: 4; /* Quarto no mobile: Lista de posts */
+        grid-template-columns: 1fr; /* Ajusta os posts para largura total */
+        gap: 1rem;
+    }
+
+    .featured-post {
+        order: 5; /* Último no mobile: "Como é ser um desenvolvedor" */
+    }
+}
+
+
+
+    </style>
+</head>
+<body>  
+    <header>
+        <h1>The Dev News</h1>
+    </header>
+    <div class="main-container">
+        <!-- Featured Post -->
+    <section class="featured-post">
+        <div>
+            <img src="Image/cidade.png" alt="">
+        </div>
+    </section>
+        <!-- Sidebar (Posts Populares e Categorias) -->
+    <section class="Container-Pop">
+        <header class="Populares">
+            <h3>Posts populares</h3>
+        </header>
+        <div class="sidebar">             
+                <div class="sidebar-post">
+                    <img src="Image/DevAtual.png" alt="Desenvolvimento Atual">
+                    <p>Desenvolvimento atual</p>
+                </div>
+                <div class="sidebar-post">
+                    <img src="Image/git.png" alt="GitLab vs GitHub">
+                    <p>GitLab vs GitHub</p>
+                </div>
+                <div class="sidebar-post">
+                    <img src="Image/coffee.png" alt="Café atrapalha?">
+                    <p>Café atrapalha?</p>
+                </div>
+    <section>
+        <header class="Recentes">
+            <h3>Categorias</h3>
+        </header>
+    </section>
+            <div class="sidebar-section sidebar-categories">
+                
+                <ul>
+                    <li><a href="#">Saúde (1)</a></li>
+                    <li><a href="#">Desenvolvimento (2)</a></li>
+                    <li><a href="#">Produtividade (2)</a></li>
+                    <li><a href="#">Opinião (1)</a></li>
+                </ul>
+            </div>
+        </div>
+    </section> 
+
+        <!-- Posts mais Recentes -->
+    <section class="Container-Recentes">
+        <header class="Recentes">
+            <h2>Posts mais recentes</h2>
+        </header>            
+        <div class="posts-container">            
+            <div class="post-grid">
+                <div class="post">
+                    <img src="Image/smarthphone.png" alt="Post 1">
+                    <div class="post-content">
+                        <h3>Desenvolvimento mobile</h3>
+                        <p>Por Fábio Tetsuo - 22 Agosto 2022</p>
+                        <p>Lorem ipsum dolor sit amet consectetur...</p>
+                    </div>
+                </div>
+                <div class="post">
+                    <img src="Image/balanceamento.png" alt="Post 2">
+                    <div class="post-content">
+                        <h3>Balancear vida profissional e pessoal</h3>
+                        <p>Por Ridho Satriawan - 22 Agosto 2022</p>
+                        <p>Lorem ipsum dolor sit amet consectetur...</p>
+                    </div>
+                </div>
+                <div class="post">
+                    <img src="Image/vscode.png" alt="Post 3">
+                    <div class="post-content">
+                        <h3>Configurando VSCode</h3>
+                        <p>Por Fábio Tetsuo - 22 Agosto 2022</p>
+                        <p>Lorem ipsum dolor sit amet consectetur...</p>
+                    </div>
+                </div>
+                <div class="post">
+                    <img src="Image/monitores.png" alt="Post 4">
+                    <div class="post-content">
+                        <h3>2 monitores ou 1 ultrawide?</h3>
+                        <p>Por Fulano da Silva - 22 Agosto 2022</p>
+                        <p>Lorem ipsum dolor sit amet consectetur...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    </div>
+
+    <footer>
+        Copyright @The Dev News
+    </footer>
+</body>
+</html>
