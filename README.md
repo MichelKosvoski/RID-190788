@@ -1,2 +1,2 @@
 Site desenvolvido para potencializar meu conhecimento em reponsividade!!
-Link:https://thedevnewss.netlify.app
+Link:https://newdevsoftware.netlify.app
